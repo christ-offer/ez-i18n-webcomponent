@@ -8,6 +8,8 @@ Idea was born out of wondering how to do i18n on my supabase/htmx stack.
 We set the element as hidden by default - so that it wont show up in the DOM if the user has disabled JS.
 It will then fall back to the hardcoded HTML strings
 
+It sets the preferred-lang in localStorage, so that it is kept across page reloads.
+
 ```html
 <html>
   <head>
