@@ -10,7 +10,7 @@ It will then fall back to the hardcoded HTML strings
 ```html
 <html>
   <head>
-    <script src="https://unpkg.com/@ez-i18n/web-component"></script>
+    <script src="ez-i18n.js"></script>
   </head>
   <body>
     <ez-i18n hidden>
