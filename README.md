@@ -60,7 +60,7 @@ It will then fall back to the hardcoded HTML strings
       },
     };
     document.addEventListener("DOMContentLoaded", () => {
-      const i18n = document.querySelector("i18n-selector");
+      const i18n = document.querySelector("ez-i18n");
       i18n.addLanguages(translations);
 
       // Example of listening to language changes
