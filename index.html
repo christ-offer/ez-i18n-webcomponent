@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>i18n Selector Demo</title>
+    <script src="ez-i18n.js" type="module"></script>
+  </head>
+  <body>
+    <!-- Demo Content -->
+    <i18n-selector hidden>
+      <select>
+        <option data-i18n="lang.english" value="en">English</option>
+        <option data-i18n="lang.spanish" value="es">Spanish</option>
+        <option data-i18n="lang.french" value="fr">French</option>
+      </select>
+    </i18n-selector>
+
+    <h1 data-i18n="welcome">Welcome</h1>
+    <p data-i18n="about">
+      This is a relatievely simple i18n web-component - it works for me.
+    </p>
+    <h2 data-i18n="basic_usage_title">Basic Usage:</h2>
+    <h3 data-i18n="basic_usage_markup">Pretty straight forward markup:</h3>
+    <pre><code>&lt;i18n-selector hidden&gt;
+&lt;select&gt;
+  &lt;option value="en"&gt;English&lt;/option&gt;
+  &lt;option value="es"&gt;Spanish&lt;/option&gt;
+  &lt;option value="fr"&gt;French&lt;/option&gt;
+&lt;/select&gt;
+&lt;/i18n-selector&gt;
+&lt;h1 data-i18n="welcome"&gt;Welcome&lt;/h1&gt;
+    </code></pre>
+    <h3 data-i18n="basic_usage_script">Example of loading translations for this site:</h3>
+    <pre><code>const translations = {
+  en: {
+    lang: {
+      english: "English",
+      spanish: "Spanish",
+      french: "French"
+    },
+    welcome: "Welcome",
+    about: "This is a relatievely simple i18n web-component - it works for me.",
+    basic_usage_title: "Basic Usage:",
+    basic_usage_markup: "Pretty straight forward markup:",
+    basic_usage_script: "Example of loading translations for this site:",
+    intro: {
+      1: "This is a sample text that",
+      span: "definitely",
+      2: " will be translated.",
+      text: "This is a sample text that translates - but where did 'definitely' go?",
+    },
+    nested: "If you have to have nested translations (e.g. styling a single word/phrase in a paragraph):",
+    how_to_do: "How to do it:",
+    how_not_to: "How Not to do it:",
+    action: {
+      submit: "Submit",
+    },
+  },
+  es: {
+    lang: {
+      english: "Inglés",
+      spanish: "Español",
+      french: "Francés"
+    },
+    welcome: "Bienvenidos",
+    "about": "Este es un componente relativamente sencillo de i18n - funciona para mí.",
+    basic_usage_title: "Uso Básico:",
+    basic_usage_markup: "Marcado de forma sencilla:",
+    basic_usage_script: "Ejemplo de carga de traducciones para este sitio:",
+    intro: {
+      1: "Este es un texto de ejemplo que",
+      span: "seguramente",
+      2: " será traducido.",
+      text: "Este es un texto de ejemplo que se traduce - ¿pero dónde se fue 'definitivamente'?",
+    },
+    how_to_do: "Cómo hacerlo:",
+    how_not_to: "Cómo no hacerlo:",
+    nested: "Si tiene que tener traducciones anidadas (por ejemplo, estilizando una sola palabra/frase en un párrafo):",
+    action: {
+      submit: "Enviar",
+    },
+  },
+  fr: {
+    lang: {
+      english: "Anglais",
+      spanish: "Espagnol",
+      french: "Français"
+    },
+    welcome: "Bienvenue",
+    about: "C'est un composant relativement simple de i18n - ça marche pour moi.",
+    basic_usage_title: "Utilisation basique:",
+    basic_usage_markup: "Le markup est assez simple:",
+    basic_usage_script: "Exemple de chargement de traductions pour ce site:",
+    intro: {
+      1: "Voici un exemple de texte qui",
+      span: "sûrement",
+      2: " sera traduit.",
+      text: "Voici un exemple de texte qui se traduit - mais où est passé 'définitivement' ?",
+    },
+    how_to_do: "Comment faire :",
+    how_not_to: "Comment ne pas faire :",
+    nested: "Si vous devez avoir des traductions imbriquées (par exemple, mettre en forme une seule phrase/mot en un paragraphe) :",
+    action: {
+      submit: "Soumettre",
+    },
+  },
+};
+
+// Initialize the component with translations
+document.addEventListener("DOMContentLoaded", () => {
+  const i18n = document.querySelector("i18n-selector");
+  i18n.addLanguages(translations);
+
+  // Example of listening to language changes
+  i18n.addEventListener("languageChanged", (e) => {
+    console.log(`Language changed to: ${e.detail.language}`);
+  });
+});</code></pre>
+
+    <h2 data-i18n="nested">If you have to have nested translations (e.g. styling a single word/phrase in a paragraph):</h2>
+    <h3 data-i18n="how_to_do">How to do it:</h3>
+    <pre><code>&lt;p&gt;
+  &lt;span data-i18n="intro.1"&gt;This is a sample text that&lt;/span&gt;
+  &lt;span data-i18n="intro.span"&gt;definitely&lt;/span&gt;
+  &lt;span data-i18n="intro.2"&gt; will be translated.&lt;/span&gt;
+&lt;/p&gt;
+    </code></pre>
+    <p>
+      <span data-i18n="intro.1">This is a sample text that</span>
+      <span data-i18n="intro.span"">definitely</span>
+      <span data-i18n="intro.2"> will be translated.</span>
+    </p>
+
+    <h3 data-i18n="how_not_to">How Not to do it:</h3>
+    <pre><code>&lt;p data-i18n="intro.text"&gt;
+  This is a sample text that
+  &lt;span data-i18n="intro.span"&gt;definitely&lt;/span&gt;
+  translates - but where did 'definitely' go?
+&lt;/p&gt;
+    </code></pre>
+    <p data-i18n="intro.text">
+      This is a sample text that
+      <span data-i18n="intro.span">definitely</span>
+      translates - but where did 'definitely' go?
+    </p>
+    <button data-i18n="action.submit">Submit</button>
+
+    <script>
+      // Demo translations - The JSON can be nested as deep as you want.
+      const translations = {
+        en: {
+          lang: {
+            english: "English",
+            spanish: "Spanish",
+            french: "French"
+          },
+          welcome: "Welcome",
+          about: "This is a relatievely simple i18n web-component - it works for me.",
+          basic_usage_title: "Basic Usage:",
+          basic_usage_markup: "Pretty straight forward markup:",
+          basic_usage_script: "Example of loading translations for this site:",
+          intro: {
+            1: "This is a sample text that",
+            span: "definitely",
+            2: " will be translated.",
+            text: "This is a sample text that translates - but where did 'definitely' go?",
+          },
+          nested: "If you have to have nested translations (e.g. styling a single word/phrase in a paragraph):",
+          how_to_do: "How to do it:",
+          how_not_to: "How Not to do it:",
+          action: {
+            submit: "Submit",
+          },
+        },
+        es: {
+          lang: {
+            english: "Inglés",
+            spanish: "Español",
+            french: "Francés"
+          },
+          welcome: "Bienvenidos",
+          "about": "Este es un componente relativamente sencillo de i18n - funciona para mí.",
+          basic_usage_title: "Uso Básico:",
+          basic_usage_markup: "Marcado de forma sencilla:",
+          basic_usage_script: "Ejemplo de carga de traducciones para este sitio:",
+          intro: {
+            1: "Este es un texto de ejemplo que",
+            span: "seguramente",
+            2: " será traducido.",
+            text: "Este es un texto de ejemplo que se traduce - ¿pero dónde se fue 'definitivamente'?",
+          },
+          how_to_do: "Cómo hacerlo:",
+          how_not_to: "Cómo no hacerlo:",
+          nested: "Si tiene que tener traducciones anidadas (por ejemplo, estilizando una sola palabra/frase en un párrafo):",
+          action: {
+            submit: "Enviar",
+          },
+        },
+        fr: {
+          lang: {
+            english: "Anglais",
+            spanish: "Espagnol",
+            french: "Français"
+          },
+          welcome: "Bienvenue",
+          about: "C'est un composant relativement simple de i18n - ça marche pour moi.",
+          basic_usage_title: "Utilisation basique:",
+          basic_usage_markup: "Le markup est assez simple:",
+          basic_usage_script: "Exemple de chargement de traductions pour ce site:",
+          intro: {
+            1: "Voici un exemple de texte qui",
+            span: "sûrement",
+            2: " sera traduit.",
+            text: "Voici un exemple de texte qui se traduit - mais où est passé 'définitivement' ?",
+          },
+          how_to_do: "Comment faire :",
+          how_not_to: "Comment ne pas faire :",
+          nested: "Si vous devez avoir des traductions imbriquées (par exemple, mettre en forme une seule phrase/mot en un paragraphe) :",
+          action: {
+            submit: "Soumettre",
+          },
+        },
+      };
+
+      // Initialize the component with translations
+      document.addEventListener("DOMContentLoaded", () => {
+        const i18n = document.querySelector("i18n-selector");
+        i18n.addLanguages(translations);
+
+        // Example of listening to language changes
+        i18n.addEventListener("languageChanged", (e) => {
+          console.log(`Language changed to: ${e.detail.language}`);
+        });
+      });
+    </script>
+  </body>
+</html>
