@@ -1,6 +1,7 @@
 # ez-i18n Web Component
 
-This is a basic yet fairly powerful web component that allows for easily doing i18n on static websites.
+This is a basic yet "good enough for me" web component that allows for easily doing i18n on static websites.
+Idea was born out of wondering how to do i18n on my supabase/htmx stack.
 
 ## Usage
 
@@ -93,4 +94,4 @@ Workaround for this - put each span of text, you guessed it, inside a span:
 </p>
 ```
 
-This is a slight workaround, but it is still semantically correct markup and keeps the logic of the component very simple.
+This is slightly annoying, but it is still semantically correct markup and keeps the logic of the component very simple.
