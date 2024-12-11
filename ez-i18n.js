@@ -78,4 +78,4 @@ class I18nSelector extends HTMLElement {
 }
 
 // Register the web component
-customElements.define("i18n-selector", I18nSelector);
+customElements.define("ez-i18n", I18nSelector);
