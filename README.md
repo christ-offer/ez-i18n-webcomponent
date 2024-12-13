@@ -1,14 +1,25 @@
 # ez-i18n Web Component
 
+Designed specifically for use with [htmx](https://htmx.org/) - Will work for static html. Framworks - no support guaranteed.
+
 This is a basic yet "good enough for me" web component that allows for easily doing i18n on static websites.
 Idea was born out of wondering how to do i18n on my supabase/htmx stack.
 
+It sets the preferred-lang in localStorage, so that it is kept across page reloads.
+
 ## Usage
+
+#### Labels:
+
+`data-i18n` attribute - will replace the textContent of the element with the translation.
+`data-i18n-placeholder` - will replace the placeholder attribute of the element with the translation.
+`data-i18n-alt` - will replace the alt attribute of the element with the translation.
+`data-i18n-aria-label` - will replace the aria-label attribute of the element with the translation.
+
+#### Markup:
 
 We set the element as hidden by default - so that it wont show up in the DOM if the user has disabled JS.
 It will then fall back to the hardcoded HTML strings
-
-It sets the preferred-lang in localStorage, so that it is kept across page reloads.
 
 ```html
 <html>
