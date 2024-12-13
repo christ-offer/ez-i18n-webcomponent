@@ -118,6 +118,11 @@ It will then fall back to the hardcoded HTML strings
 
 # Limitations
 
+- Does not implement caching of elements or lazy loading of translations as of now
+
+  - This should more rely on being used in a MPA and depend on good caching of translation files.
+  - Does mean that there will be some performance impact if there are _a lot_ of translations. (for most use-cases this will not matter)
+
 - Does not supported nested elements in the markup
 
 This example, will translate hello world - but will not translate whatever comes after the span:
