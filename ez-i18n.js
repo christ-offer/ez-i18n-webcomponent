@@ -66,7 +66,12 @@ class I18nSelector extends HTMLElement {
         key
       );
       if (translation) {
-        element.textContent = translation;
+        // Special case for meta tags
+        if (element.tagName === 'META') {
+          element.setAttribute('content', translation);
+        } else {
+          element.textContent = translation;
+        }
       }
     });
 

@@ -1,11 +1,20 @@
 # ez-i18n Web Component
 
-Designed specifically for use with [htmx](https://htmx.org/) - Will work for static html. Framworks - no support guaranteed.
+Designed specifically for use with [htmx](https://htmx.org/) - Will work for static html. Framworks - no support guaranteed, you have your own stuff.
 
 This is a basic yet "good enough for me" web component that allows for easily doing i18n on static websites.
 Idea was born out of wondering how to do i18n on my supabase/htmx stack.
 
 It sets the preferred-lang in localStorage, so that it is kept across page reloads.
+
+Currently uses the `htmx:afterSettle` event to update the content for dynamic content support. Basic, but does the trick for now.
+
+```js
+// Handle HTMX content updates
+document.body.addEventListener("htmx:afterSettle", () => {
+  this.updateContent();
+});
+```
 
 ## Usage
 
@@ -15,6 +24,16 @@ It sets the preferred-lang in localStorage, so that it is kept across page reloa
 - `data-i18n-placeholder` - will replace the placeholder attribute of the element with the translation.
 - `data-i18n-alt` - will replace the alt attribute of the element with the translation.
 - `data-i18n-aria-label` - will replace the aria-label attribute of the element with the translation.
+
+Usage with meta tags:
+
+```html
+<meta
+  name="description"
+  data-i18n="meta.description"
+  content="Default description"
+/>
+```
 
 #### Markup:
 
