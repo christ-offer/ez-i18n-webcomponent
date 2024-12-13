@@ -181,11 +181,6 @@ class I18nSelector extends HTMLElement {
     // If no translation found, return obvious error message
     return `Missing translation for "${path}"`;
   }
-  // getNestedTranslation(obj, path) {
-  //   return path.split(".").reduce((prev, curr) => {
-  //     return prev ? prev[curr] : null;
-  //   }, obj);
-  // }
 }
 
 // Register the web component
