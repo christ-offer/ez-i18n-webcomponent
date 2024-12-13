@@ -33,8 +33,8 @@ Usage with numbers/currencies:
 ```html
 <span data-i18n-number>12412351.5416</span>
 <span data-i18n-currency="usd">1234.56</span>
-<span data-i18n-currency="eur">1234.56</span>
-<span data-i18n-currency="gbp">1234.56</span>
+<span data-i18n-currency="eur">2434.36</span>
+<span data-i18n-currency="gbp">924.62</span>
 ```
 
 Usage with meta tags:
