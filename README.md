@@ -125,6 +125,8 @@ It will then fall back to the hardcoded HTML strings
 
 - Does not supported nested elements in the markup
 
+This is currently considered a feature, not a bug.
+
 This example, will translate hello world - but will not translate whatever comes after the span:
 
 ```html
