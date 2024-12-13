@@ -22,8 +22,20 @@ document.body.addEventListener("htmx:afterSettle", () => {
 
 - `data-i18n` attribute - will replace the textContent of the element with the translation.
 - `data-i18n-placeholder` - will replace the placeholder attribute of the element with the translation.
+- `data-i18n-error` - will replace the form validation error message with the translation.
 - `data-i18n-alt` - will replace the alt attribute of the element with the translation.
 - `data-i18n-aria-label` - will replace the aria-label attribute of the element with the translation.
+- `data-i18n-number` - will replace the number with the internationalized number.
+- `data-i18n-currency` - will replace the currency with the internationalized currency.
+
+Usage with numbers/currencies:
+
+```html
+<span data-i18n-number>12412351.5416</span>
+<span data-i18n-currency="usd">1234.56</span>
+<span data-i18n-currency="eur">1234.56</span>
+<span data-i18n-currency="gbp">1234.56</span>
+```
 
 Usage with meta tags:
 

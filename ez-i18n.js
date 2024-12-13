@@ -88,6 +88,19 @@ class I18nSelector extends HTMLElement {
       }
     });
 
+    // Handle validation messages
+    const formElements = document.querySelectorAll("[data-i18n-error]");
+    formElements.forEach((element) => {
+      const key = element.getAttribute("data-i18n-error");
+      const translation = this.getNestedTranslation(
+        this.translations[this.currentLang],
+        key
+      );
+      if (translation) {
+        element.setCustomValidity(translation);
+      }
+    });
+
     // Handle alt text
     const altElements = document.querySelectorAll("[data-i18n-alt]");
     altElements.forEach((element) => {
@@ -113,14 +126,66 @@ class I18nSelector extends HTMLElement {
         element.setAttribute("aria-label", translation);
       }
     });
+
+    // Handle basic numbers
+    const numberElements = document.querySelectorAll("[data-i18n-number]");
+    numberElements.forEach((element) => {
+      if (!element.hasAttribute('data-original-number')) {
+        element.setAttribute('data-original-number', element.textContent);
+      }
+
+      const originalNumber = element.getAttribute('data-original-number');
+      if (originalNumber.length > 16) {
+        console.warn(`Number ${originalNumber} is too large for precise handling - displaying original number`);
+        element.textContent = originalNumber;
+        return;
+      }
+
+      const number = parseFloat(originalNumber);
+      if (!isNaN(number)) {
+        element.textContent = new Intl.NumberFormat(this.currentLang).format(number);
+      }
+    });
+
+    // Handle currency
+    const currencyElements = document.querySelectorAll("[data-i18n-currency]");
+    currencyElements.forEach((element) => {
+      if (!element.hasAttribute('data-original-number')) {
+        element.setAttribute('data-original-number', element.textContent);
+      }
+
+      const originalNumber = element.getAttribute('data-original-number');
+      const number = parseFloat(originalNumber);
+      if (!isNaN(number)) {
+        const currency = element.getAttribute("data-i18n-currency").toUpperCase();
+        element.textContent = new Intl.NumberFormat(this.currentLang, {
+          style: 'currency',
+          currency: currency
+        }).format(number);
+      }
+    });
   }
 
   // Helper function to handle nested translation keys (e.g., "action.submit")
   getNestedTranslation(obj, path) {
-    return path.split(".").reduce((prev, curr) => {
+    // Try to get the translation
+    const translation = path.split(".").reduce((prev, curr) => {
       return prev ? prev[curr] : null;
     }, obj);
+
+    // If we found a translation, use it
+    if (translation) {
+      return translation;
+    }
+
+    // If no translation found, return obvious error message
+    return `Missing translation for "${path}"`;
   }
+  // getNestedTranslation(obj, path) {
+  //   return path.split(".").reduce((prev, curr) => {
+  //     return prev ? prev[curr] : null;
+  //   }, obj);
+  // }
 }
 
 // Register the web component
