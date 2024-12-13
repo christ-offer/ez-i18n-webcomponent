@@ -11,10 +11,10 @@ It sets the preferred-lang in localStorage, so that it is kept across page reloa
 
 #### Labels:
 
-`data-i18n` attribute - will replace the textContent of the element with the translation.
-`data-i18n-placeholder` - will replace the placeholder attribute of the element with the translation.
-`data-i18n-alt` - will replace the alt attribute of the element with the translation.
-`data-i18n-aria-label` - will replace the aria-label attribute of the element with the translation.
+- `data-i18n` attribute - will replace the textContent of the element with the translation.
+- `data-i18n-placeholder` - will replace the placeholder attribute of the element with the translation.
+- `data-i18n-alt` - will replace the alt attribute of the element with the translation.
+- `data-i18n-aria-label` - will replace the aria-label attribute of the element with the translation.
 
 #### Markup:
 
