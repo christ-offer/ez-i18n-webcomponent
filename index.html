@@ -16,27 +16,29 @@
     </ez-i18n>
 
     <h1 data-i18n="welcome">Welcome</h1>
-    <span data-i18n-number>12412351.5416</span><br>
+    <span data-i18n-number>12412351.5416</span><br />
 
     <!-- Currencies -->
-    <span data-i18n-currency="usd">1234.56</span><br>
-    <span data-i18n-currency="eur">2434.36</span><br>
-    <span data-i18n-currency="gbp">924.62</span><br>
+    <span data-i18n-currency="usd">1234.56</span><br />
+    <span data-i18n-currency="eur">2434.36</span><br />
+    <span data-i18n-currency="gbp">924.62</span><br />
     <p data-i18n="about">
       This is a relatievely simple i18n web-component - it works for me.
     </p>
     <h2 data-i18n="basic_usage_title">Basic Usage:</h2>
     <h3 data-i18n="basic_usage_markup">Pretty straight forward markup:</h3>
-    <pre><code>&lt;i18n-selector hidden&gt;
+    <pre><code>&lt;ez-i18n hidden&gt;
 &lt;select&gt;
   &lt;option value="en"&gt;English&lt;/option&gt;
   &lt;option value="es"&gt;Spanish&lt;/option&gt;
   &lt;option value="fr"&gt;French&lt;/option&gt;
 &lt;/select&gt;
-&lt;/i18n-selector&gt;
+&lt;/ez-i18n&gt;
 &lt;h1 data-i18n="welcome"&gt;Welcome&lt;/h1&gt;
     </code></pre>
-    <h3 data-i18n="basic_usage_script">Example of loading translations for this site:</h3>
+    <h3 data-i18n="basic_usage_script">
+      Example of loading translations for this site:
+    </h3>
     <pre><code>const translations = {
   en: {
     lang: {
@@ -114,7 +116,7 @@
 
 // Initialize the component with translations
 document.addEventListener("DOMContentLoaded", () => {
-  const i18n = document.querySelector("i18n-selector");
+  const i18n = document.querySelector("ez-i18n");
   i18n.addLanguages(translations);
 
   // Example of listening to language changes
@@ -123,7 +125,10 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });</code></pre>
 
-    <h2 data-i18n="nested">If you have to have nested translations (e.g. styling a single word/phrase in a paragraph):</h2>
+    <h2 data-i18n="nested">
+      If you have to have nested translations (e.g. styling a single word/phrase
+      in a paragraph):
+    </h2>
     <h3 data-i18n="how_to_do">How to do it:</h3>
     <pre><code>&lt;p&gt;
   &lt;span data-i18n="intro.1"&gt;This is a sample text that&lt;/span&gt;
@@ -133,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </code></pre>
     <p>
       <span data-i18n="intro.1">This is a sample text that</span>
-      <span data-i18n="intro.span"">definitely</span>
+      <span data-i18n="intro.span">definitely</span>
       <span data-i18n="intro.2"> will be translated.</span>
     </p>
 
@@ -158,10 +163,11 @@ document.addEventListener("DOMContentLoaded", () => {
           lang: {
             english: "English",
             spanish: "Spanish",
-            french: "French"
+            french: "French",
           },
           welcome: "Welcome",
-          about: "This is a relatievely simple i18n web-component - it works for me.",
+          about:
+            "This is a relatievely simple i18n web-component - it works for me.",
           basic_usage_title: "Basic Usage:",
           basic_usage_markup: "Pretty straight forward markup:",
           basic_usage_script: "Example of loading translations for this site:",
@@ -171,7 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
             2: " will be translated.",
             text: "This is a sample text that translates - but where did 'definitely' go?",
           },
-          nested: "If you have to have nested translations (e.g. styling a single word/phrase in a paragraph):",
+          nested:
+            "If you have to have nested translations (e.g. styling a single word/phrase in a paragraph):",
           how_to_do: "How to do it:",
           how_not_to: "How Not to do it:",
           action: {
@@ -182,13 +189,15 @@ document.addEventListener("DOMContentLoaded", () => {
           lang: {
             english: "Inglés",
             spanish: "Español",
-            french: "Francés"
+            french: "Francés",
           },
           welcome: "Bienvenidos",
-          "about": "Este es un componente relativamente sencillo de i18n - funciona para mí.",
+          about:
+            "Este es un componente relativamente sencillo de i18n - funciona para mí.",
           basic_usage_title: "Uso Básico:",
           basic_usage_markup: "Marcado de forma sencilla:",
-          basic_usage_script: "Ejemplo de carga de traducciones para este sitio:",
+          basic_usage_script:
+            "Ejemplo de carga de traducciones para este sitio:",
           intro: {
             1: "Este es un texto de ejemplo que",
             span: "seguramente",
@@ -197,7 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           how_to_do: "Cómo hacerlo:",
           how_not_to: "Cómo no hacerlo:",
-          nested: "Si tiene que tener traducciones anidadas (por ejemplo, estilizando una sola palabra/frase en un párrafo):",
+          nested:
+            "Si tiene que tener traducciones anidadas (por ejemplo, estilizando una sola palabra/frase en un párrafo):",
           action: {
             submit: "Enviar",
           },
@@ -206,13 +216,15 @@ document.addEventListener("DOMContentLoaded", () => {
           lang: {
             english: "Anglais",
             spanish: "Espagnol",
-            french: "Français"
+            french: "Français",
           },
           welcome: "Bienvenue",
-          about: "C'est un composant relativement simple de i18n - ça marche pour moi.",
+          about:
+            "C'est un composant relativement simple de i18n - ça marche pour moi.",
           basic_usage_title: "Utilisation basique:",
           basic_usage_markup: "Le markup est assez simple:",
-          basic_usage_script: "Exemple de chargement de traductions pour ce site:",
+          basic_usage_script:
+            "Exemple de chargement de traductions pour ce site:",
           intro: {
             1: "Voici un exemple de texte qui",
             span: "sûrement",
@@ -221,7 +233,8 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           how_to_do: "Comment faire :",
           how_not_to: "Comment ne pas faire :",
-          nested: "Si vous devez avoir des traductions imbriquées (par exemple, mettre en forme une seule phrase/mot en un paragraphe) :",
+          nested:
+            "Si vous devez avoir des traductions imbriquées (par exemple, mettre en forme une seule phrase/mot en un paragraphe) :",
           action: {
             submit: "Soumettre",
           },

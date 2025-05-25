@@ -118,10 +118,11 @@ It will then fall back to the hardcoded HTML strings
 
 # Limitations
 
-- Does not implement caching of elements or lazy loading of translations as of now
+- Implements DOM element caching for better performance with large numbers of translated elements
 
-  - This should more rely on being used in a MPA and depend on good caching of translation files.
-  - Does mean that there will be some performance impact if there are _a lot_ of translations. (for most use-cases this will not matter)
+  - Translation lookup paths are cached to avoid repeated string splitting
+  - DOM queries are cached when possible to reduce performance impact
+  - Still relies on being used in a MPA and depends on good caching of translation files for optimal performance
 
 - Does not supported nested elements in the markup
 
